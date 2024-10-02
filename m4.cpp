@@ -1,18 +1,20 @@
 /*
-*	Flename:		m4.cpp
+*   Flename:		m4.cpp
 *   Project:		Major4Assignment
-*   By:				Luke Alkema
-*   Date:			December 2, 2023
+*   By:			Luke Alkema
+*   Date:		December 2, 2023
 *   Description:	This program opens a text file called teams.txt and uses that to 
-*					open many other team files, and then parse data from them and display
-*					the data for each team for the season after all the data is read from 
-*					the individual teams text file.
+*			open many other team files, and then parse data from them and display
+*			the data for each team for the season after all the data is read from 
+*			the individual teams text file.
 */
 
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #pragma warning(disable: 4996)
+
+//constants
 #define LINE_LENGTH 41
 const int success = 1;
 const int fail = 0;
@@ -69,10 +71,10 @@ int main(void)
 
 // Function:	processGames()
 // Parameters:	char: filename[]: An array of characters that specifies the file for processGames() to open		
-// Returns:		int: Status: 1 if success and no errors, 0 if there were errors			
+// Returns:	int: Status: 1 if success and no errors, 0 if there were errors			
 // Description: This function gets a filename from main, then opens the file and processes the data by checking which
-//				team won (by calling parseLine()) and then displaying the calculations it does to the user. It will
-//				skip over blank lines. 
+//		team won (by calling parseLine()) and then displaying the calculations it does to the user. It will
+//		skip over blank lines. 
 int processGames(char filename[])
 {
 	FILE* pGameResults = NULL;
@@ -164,9 +166,9 @@ int processGames(char filename[])
 
 // Function:	parseLine()
 // Parameters:	char gameResult[], char opponentTeamName[], int* primaryTeamScore, int* opponentTeamScore		
-// Returns:		int status: Will return one if success and 0 if failure			
+// Returns:	int status: Will return one if success and 0 if failure			
 // Description: This function gets the game result from processGames() and will sort through the line, separating the 
-//				opponentTeamName from the file scores, and it also parses the score each team got into actual integers.
+//		opponentTeamName from the file scores, and it also parses the score each team got into actual integers.
 int parseLine(char gameResult[], char opponentTeamName[], int* primaryTeamScore, int* opponentTeamScore)
 {
 	int status = success;
@@ -215,7 +217,7 @@ int parseLine(char gameResult[], char opponentTeamName[], int* primaryTeamScore,
 
 // Function:	deleteNewLineCharacter()
 // Parameters:	char: string[]: Any array of characters			
-// Returns:		void			
+// Returns:	void			
 // Description: This function simply replaces the '\n' character from the end of a C-string with null (if it is there) (normally used because fgets() adds a \n automatically to the end of a string) 
 
 void deleteNewLineCharacter(char string[])
@@ -231,16 +233,16 @@ void deleteNewLineCharacter(char string[])
 	{
 		string[i] = '\0';
 	}
-}// credits: Segro, C. (2015, Oct 21). strequal.c. eConestoga,  https://conestoga.desire2learn.com/d2l/le/content/879640/viewContent/17227039/View
+}//end deleteNewLineCharacter
 
 
 
 
 // Function:	getHomeTeamName()
 // Parameters:	char filename[], char homeTeamName[]		
-// Returns:		void			
+// Returns:	void			
 // Description: This function is for any file in a C-string, it will simply take of the extension from the name of the file. 
-//				The file must have a '.' to work properly, as the dot indicates there is an extension on the filename. 
+//		The file must have a '.' to work properly, as the dot indicates there is an extension on the filename. 
 void getHomeTeamName(char filename[], char homeTeamName[])
 {
 
